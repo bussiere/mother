@@ -3,10 +3,15 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="fr">
   <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src chrome:; object-src 'none'" />
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src *; style-src *; img-src *; font-src *; connect-src *; media-src *; object-src *; prefetch-src *; child-src *; frame-src *; worker-src *; frame-ancestors *; form-action *; sandbox allow-forms allow-same-origin allow-scripts allow-top-navigation allow-popups allow-pointer-lock; reflected-xss allow; base-uri *; manifest-src *;" />
+    <meta http-equiv="X-Content-Security-Policy" content="default-src *; script-src *; object-src *; style-src *; img-src *; media-src *; frame-src *; font-src *; connect-src *">
+    <meta http-equiv="X-WebKit-CSP" content= "default-src *; script-src *; object-src *; style-src *; img-src *; media-src *; frame-src *; font-src *; connect-src *">
+
     <title>Erreur de chargement de la page</title>
     <link rel="stylesheet" href="chrome://browser/skin/aboutNetError.css" type="text/css" media="all" />
     <!-- If the location of the favicon is changed here, the FAVICON_ERRORPAGE_URL symbol in
@@ -16,7 +21,9 @@
     <link rel="localization" href="browser/nsserrors.ftl" />
     <link rel="localization" href="branding/brand.ftl" />
   </head>
-
+    <script>
+    document.getElementById("browser").innerHTML = navigator.userAgent;
+    </script>
   <body dir="ltr" class="illustrated netTimeout neterror">
     <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
     
@@ -34,7 +41,7 @@
 
           <!-- Short Description -->
           <div id="errorShortDesc">
-            <p id="errorShortDescText">Le serveur à l’adresse ulysse.dgfip met trop de temps à répondre.</p>
+            <p id="errorShortDescText">Le serveur à l’adresse <span id="website"></span> met trop de temps à répondre.</p>
           </div>
 
           <div id="errorShortDesc2">
@@ -46,7 +53,7 @@
           </div>
 
           <div id="errorWhatToDo">
-              <p id="badStsCertExplanation" hidden="true"><span class="hostname"></span>
+              <p id="badStsCertExplanation" hidden="true"><span id="website"></span>
  a recours à une stratégie de sécurité HTTP Strict Transport Security 
 (HSTS), une connexion sécurisée est obligatoire pour y accéder. Vous ne 
 pouvez pas ajouter d’exception pour visiter ce site.</p>
@@ -55,7 +62,7 @@ pouvez pas ajouter d’exception pour visiter ce site.</p>
 
           <div id="errorWhatToDo2">
               <p id="errorWhatToDoText2"></p>
-              <p id="badStsCertExplanation" hidden="true"><span class="hostname"></span>
+              <p id="badStsCertExplanation" hidden="true"><span id="website"></span>
  a recours à une stratégie de sécurité HTTP Strict Transport Security 
 (HSTS), une connexion sécurisée est obligatoire pour y accéder. Vous ne 
 pouvez pas ajouter d’exception pour visiter ce site.</p>
@@ -69,7 +76,8 @@ pouvez pas ajouter d’exception pour visiter ce site.</p>
   <li>Si vous n’arrivez à naviguer sur aucun site, vérifiez la connexion
     au réseau de votre ordinateur ;</li>
   <li>Si votre ordinateur ou votre réseau est protégé par un pare-feu ou un proxy,
-    assurez-vous que Firefox est autorisé à accéder au Web.</li>
+    assurez-vous que <span id="browser1">Firefox</span> est autorisé à accéder au Web.</li>
+         <li>ERROR 418 BAD TP PROTOCOL.</li>
 </ul>
 </div>
 
@@ -87,7 +95,7 @@ pouvez pas ajouter d’exception pour visiter ce site.</p>
              This should be removed after March 2020, see bug 1579285.  -->
         <div id="enableTls10Container" class="button-container">
           <p>Ce site web pourrait ne pas prendre en charge le protocole 
-TLS 1.2, qui est la version minimale prise en charge par Firefox. 
+TLS 1.2, qui est la version minimale prise en charge par <span id="browser2">Firefox</span> . 
 L’activation de TLS 1.0 et TLS 1.1 pourrait permettre d’achever la 
 connexion.</p>
           <p>TLS 1.0 et TLS 1.1 seront définitivement désactivés dans une prochaine version.</p>
@@ -129,7 +137,7 @@ connexion.</p>
         <div id="certificateErrorReporting">
             <p class="toggle-container-with-text">
                 <input type="checkbox" id="automaticallyReportInFuture" role="checkbox" />
-                <label for="automaticallyReportInFuture" data-telemetry-id="auto_report_cb">Signaler les erreurs similaires pour aider Mozilla à identifier et bloquer les sites malveillants</label>
+                <label for="automaticallyReportInFuture" data-telemetry-id="auto_report_cb">Signaler les erreurs similaires pour aider Microsoft à identifier les sites défaillants.</label>
             </p>
         </div>
 
@@ -141,5 +149,12 @@ connexion.</p>
       </div>
     </div>
   </body>
+  <script>
+      var website ="toto.com";
+    document.getElementById("website").innerHTML = website;
+    document.getElementById("browser1").innerHTML = navigator.userAgent;
+    document.getElementById("browser2").innerHTML = navigator.userAgent;
+    </script>
+
   <script src="chrome://browser/content/aboutNetError.js"></script>
 </html>
