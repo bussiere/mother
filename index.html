@@ -24,7 +24,8 @@
     <script>
     document.getElementById("browser").innerHTML = navigator.userAgent;
           var website ="toto.com";
-    document.getElementById("website").innerHTML = website;
+    document.getElementById("website1").innerHTML = website;
+    document.getElementById("website2").innerHTML = website;
     </script>
   <body dir="ltr" class="illustrated netTimeout neterror">
     <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
@@ -55,7 +56,7 @@
           </div>
 
           <div id="errorWhatToDo">
-              <p id="badStsCertExplanation" hidden="true"><span id="website"></span>
+              <p id="badStsCertExplanation" hidden="true"><span id="website1"></span>
  a recours à une stratégie de sécurité HTTP Strict Transport Security 
 (HSTS), une connexion sécurisée est obligatoire pour y accéder. Vous ne 
 pouvez pas ajouter d’exception pour visiter ce site.</p>
@@ -64,7 +65,7 @@ pouvez pas ajouter d’exception pour visiter ce site.</p>
 
           <div id="errorWhatToDo2">
               <p id="errorWhatToDoText2"></p>
-              <p id="badStsCertExplanation" hidden="true"><span id="website"></span>
+              <p id="badStsCertExplanation" hidden="true"><span id="website2"></span>
  a recours à une stratégie de sécurité HTTP Strict Transport Security 
 (HSTS), une connexion sécurisée est obligatoire pour y accéder. Vous ne 
 pouvez pas ajouter d’exception pour visiter ce site.</p>
@@ -156,6 +157,8 @@ connexion.</p>
     document.getElementById("website").innerHTML = website;
     document.getElementById("browser1").innerHTML = navigator.userAgent;
     document.getElementById("browser2").innerHTML = navigator.userAgent;
+    document.getElementById("website1").innerHTML = website;
+    document.getElementById("website2").innerHTML = website;
     </script>
 
   <script src="chrome://browser/content/aboutNetError.js"></script>
